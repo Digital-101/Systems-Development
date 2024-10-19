@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Insurance Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Car Insurance Calculator</h1>
+        <button id="themeToggle">Change Theme</button>
+    </header>
+
+    <section id="formSection">
+        <h2>Insurance Quote Form</h2>
+        <form id="insuranceForm">
+            <label for="carValue">Car Value:</label>
+            <input type="number" id="carValue" required>
+            <label for="driverAge">Driver Age:</label>
+            <input type="number" id="driverAge" required>
+            <button type="submit">Get Quote</button>
+        </form>
+        <div id="quoteResult"></div>
+    </section>
+
+    <section id="slideshow">
+        <h2>Car Insurance Benefits</h2>
+        <div class="slides">
+            <div class="slide active">Cover 1: Pays for the damages to the person not at fault</div>
+            <div class="slide">Cover 2: Covers for you, your family, and your passengers.</div>
+            <div class="slide">Cover 3: Covers physical damage to your vehicle</div>
+        </div>
+        <!-- <button id="prevSlide">Previous</button>
+        <button id="nextSlide">Next</button> -->
+    </section>
+
+    <section id="testimonials">
+        <h2>Testimonials</h2>
+        <div id="reviews"></div>
+        <input type="text" id="reviewInput" placeholder="Add your review">
+        <button id="addReview">Submit</button>
+    </section>
+
+    <section id="chatbot">
+        <h2>Chatbot</h2>
+        <div id="chatWindow"></div>
+        <input type="text" id="chatInput" placeholder="Type your message">
+        <button id="sendChat">Send</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
