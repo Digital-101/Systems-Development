@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <!-- Link to Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Basic Layout */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 220px;
+      background-color: #2c3e50;
+      color: white;
+      padding-top: 20px;
+      height: 100vh;
+      position: fixed;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
+    .sidebar .active {
+      background-color: #16a085;
+    }
+
+    /* Top Navbar Styles */
+    .top-nav {
+      width: calc(100% - 220px);
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 220px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-nav .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .top-nav .logo span {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .top-nav .search-bar {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top-nav .search-bar input {
+      padding: 8px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 15px;
+    }
+
+    .top-nav .notifications {
+      position: relative;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    .top-nav .notifications img {
+      height: 30px;
+    }
+
+    .top-nav .notifications .badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .top-nav .admin-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-nav .admin-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .top-nav .admin-info span {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    /* Content Styles */
+    .content {
+      margin-left: 240px;
+      margin-top: 70px; /* Space for top nav */
+      padding: 20px;
+      width: calc(100% - 240px);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-cards {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background-color: #ecf0f1;
+      width: 22%;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      font-size: 1.8em;
+      color: #2c3e50;
+    }
+
+    .card p {
+      font-size: 1.2em;
+      color: #16a085;
+    }
+
+    /* Chart Container */
+    .charts {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .chart {
+      width: 48%;
+      height: 300px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2 style="text-align: center; color: white;">Admin Panel</h2>
+    <a href="#" class="active">Dashboard</a>
+    <a href="#">Doctors</a>
+    <a href="#">Patients</a>
+    <a href="#">Appointments</a>
+    <a href="#">Transactions</a>
+    <a href="#">Notifications</a>
+  </div>
+
+  <!-- Top Navbar -->
+  <div class="top-nav">
+    <!-- Logo and Website Name -->
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo"> <!-- Replace with actual logo -->
+      <span>Admin Dashboard</span>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." />
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications">
+      <img src="bell.png" alt="Notification Bell">
+      <div class="badge">5</div> <!-- Example badge, you can dynamically update it -->
+    </div>
+
+    <!-- Admin Info -->
+    <div class="admin-info">
+      <img src="Ibn Sina.jpg" alt="Admin Picture"> <!-- Replace with admin picture -->
+      <span>Admin</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Admin Dashboard</h1>
+
+    <!-- Dashboard Stats Cards -->
+    <div class="dashboard-cards">
+      <div class="card">
+        <h3>Total Doctors</h3>
+        <p>15</p>
+      </div>
+      <div class="card">
+        <h3>Total Patients</h3>
+        <p>30</p>
+      </div>
+      <div class="card">
+        <h3>Total Appointments</h3>
+        <p>110</p>
+      </div>
+      <div class="card">
+        <h3>Total Earnings</h3>
+        <p>R20,500</p>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts">
+      <!-- Appointments & Earnings Chart -->
+      <div class="chart">
+        <canvas id="appointmentsChart"></canvas>
+      </div>
+
+      <!-- Doctor & Patient Chart -->
+      <div class="chart">
+        <canvas id="doctorsPatientsChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Ensure the DOM is loaded before creating the charts
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      // Appointments & Earnings Chart
+      var ctx1 = document.getElementById('appointmentsChart').getContext('2d');
+      var appointmentsChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Appointments',
+            data: [10, 20, 15, 30, 25, 35],
+            backgroundColor: 'rgba(52, 152, 219, 0.6)',
+            borderColor: 'rgba(52, 152, 219, 1)',
+            borderWidth: 1
+          }, {
+            label: 'Earnings (R)',
+            data: [1000, 2000, 1500, 3000, 2500, 3500],
+            backgroundColor: 'rgba(39, 174, 96, 0.6)',
+            borderColor: 'rgba(39, 174, 96, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      // Doctors & Patients Chart
+      var ctx2 = document.getElementById('doctorsPatientsChart').getContext('2d');
+      var doctorsPatientsChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          datasets: [{
+            label: 'Doctors',
+            data: [5, 7, 8, 10, 12, 15],
+            borderColor: 'rgba(241, 196, 15, 1)',
+            borderWidth: 2,
+            fill: false
+          }, {
+            label: 'Patients',
+            data: [50, 80, 100, 120, 150, 200],
+            borderColor: 'rgba(231, 76, 60, 1)',
+            borderWidth: 2,
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>
