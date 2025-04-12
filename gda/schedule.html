@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Schedule Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            height: 100vh;
+            overflow: hidden;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 80vh;
+            overflow: auto;
+        }
+        .calendar-section {
+            max-height: 400px;
+            overflow-y: scroll;
+        }
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .calendar th, .calendar td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .calendar th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        .calendar td.available {
+            background-color: #2ecc71;
+            cursor: pointer;
+        }
+        .calendar td.booked {
+            background-color: #e74c3c;
+            color: white;
+            cursor: not-allowed;
+        }
+        .appointment-section {
+            margin-top: 30px;
+        }
+        .appointment-form {
+            margin-top: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="time"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Doctor's Schedule Management</h1>
+</header>
+
+<div class="container">
+    <h2>Schedule Overview</h2>
+    
+    <!-- Calendar Section -->
+    <div class="calendar-section">
+        <table class="calendar">
+            <thead>
+                <tr>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="available" onclick="selectSlot('2024-12-18 09:00')">9:00 AM</td>
+                    <td class="booked">9:00 AM</td>
+                    <td class="available" onclick="selectSlot('2024-12-20 09:00')">9:00 AM</td>
+                    <td class="available" onclick="selectSlot('2024-12-19 09:00')">9:00 AM</td>
+                    <td class="booked">9:00 AM</td>
+                    <td class="available" onclick="selectSlot('2024-12-21 09:00')">9:00 AM</td>
+                    <td class="available" onclick="selectSlot('2024-12-22 09:00')">9:00 AM</td>
+                </tr>
+                <!-- Repeat for more time slots -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Appointment Section -->
+    <div class="appointment-section">
+        <h2>Manage Appointments</h2>
+        
+        <!-- Appointment Form -->
+        <form class="appointment-form">
+            <label for="patient-name">Patient Name</label>
+            <input type="text" id="patient-name" placeholder="Enter patient's name" required>
+            
+            <label for="appointment-date">Appointment Date</label>
+            <input type="date" id="appointment-date" required>
+            
+            <label for="appointment-time">Appointment Time</label>
+            <input type="time" id="appointment-time" required>
+            
+            <button type="submit">Schedule Appointment</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function selectSlot(dateTime) {
+        alert("Slot selected: " + dateTime);
+        // Logic to handle booking the selected slot
+    }
+
+    document.querySelector('.appointment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Logic to submit appointment details
+        alert("Appointment scheduled successfully!");
+    });
+</script>
+
+</body>
+</html>
