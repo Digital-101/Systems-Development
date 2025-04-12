@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Detail Page</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+      display: flex;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 220px;
+      background-color: #2c3e50;
+      color: white;
+      padding-top: 20px;
+      height: 100vh;
+      position: fixed;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
+    .sidebar .active {
+      background-color: #16a085;
+    }
+
+    /* Content Area */
+    .content {
+      margin-left: 240px;
+      padding: 30px;
+      width: calc(100% - 240px);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Doctor Details Section */
+    .doctor-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .doctor-details img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+
+    .doctor-details .info {
+      flex: 1;
+      margin-left: 20px;
+    }
+
+    .doctor-details .info h2 {
+      margin-top: 0;
+    }
+
+    /* Appointment History Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .action-buttons button {
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      background-color: #3498db;
+      color: white;
+    }
+
+    .action-buttons button:hover {
+      background-color: #2980b9;
+    }
+
+    .action-buttons .decline {
+      background-color: #e74c3c;
+    }
+
+    .action-buttons .decline:hover {
+      background-color: #c0392b;
+    }
+
+    /* Block User Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2 style="text-align: center; color: white;">Admin Panel</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Doctors</a>
+    <a href="#">Patients</a>
+    <a href="#">Appointments</a>
+    <a href="#">Transactions</a>
+    <a href="#" class="active">Doctor Details</a>
+    <a href="#">Notifications</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Doctor Details</h1>
+
+    <!-- Doctor Details Section -->
+    <div class="doctor-details">
+      <img src="https://medeor.ae/abu-dhabi/wp-content/uploads/sites/2/2023/10/Untitled_design_-_2024-09-21T142838.067-removebg-preview.png" alt="Doctor's Photo">
+      <div class="info">
+        <h2>Dr. Negin Molazadeh</h2>
+        <p><strong>Specialization:</strong> Cardiology</p>
+        <p><strong>Experience:</strong> 10 years</p>
+        <p><strong>Email:</strong> dr.neginmola10@applicenta.com</p>
+        <p><strong>Phone:</strong> +27 83 456 7890</p>
+        <p><strong>Status:</strong> <span id="status">Pending</span></p>
+      </div>
+    </div>
+
+    <!-- Appointment History -->
+    <h3>Appointment History</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Appointment ID</th>
+          <th>Patient Name</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#A12345</td>
+          <td>Jane Doe</td>
+          <td>2024-01-15</td>
+          <td>Completed</td>
+        </tr>
+        <tr>
+          <td>#A12346</td>
+          <td>Michael Johnson</td>
+          <td>2024-01-22</td>
+          <td>Completed</td>
+        </tr>
+        <tr>
+          <td>#A12347</td>
+          <td>Emily Clark</td>
+          <td>2024-02-01</td>
+          <td>Cancelled</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button id="approve-button" onclick="approveDoctor()">Approve Application</button>
+      <button class="decline" id="decline-button" onclick="declineDoctor()">Decline Application</button>
+      <button id="block-button" onclick="showBlockModal()">Block Doctor</button>
+    </div>
+  </div>
+
+  <!-- Block Doctor Modal -->
+  <div id="block-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeBlockModal()">&times;</span>
+      <h2>Are you sure you want to block Dr. John Smith?</h2>
+      <p>This will prevent Dr. John Smith from accepting any future appointments.</p>
+      <button onclick="blockDoctor()">Yes, Block</button>
+      <button onclick="closeBlockModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    // Function to approve the doctor's application
+    function approveDoctor() {
+      const status = document.getElementById('status');
+      status.textContent = 'Approved';
+      alert('Doctor application approved!');
+    }
+
+    // Function to decline the doctor's application
+    function declineDoctor() {
+      const status = document.getElementById('status');
+      status.textContent = 'Declined';
+      alert('Doctor application declined!');
+    }
+
+    // Function to show the block doctor modal
+    function showBlockModal() {
+      document.getElementById('block-modal').style.display = 'block';
+    }
+
+    // Function to close the block doctor modal
+    function closeBlockModal() {
+      document.getElementById('block-modal').style.display = 'none';
+    }
+
+    // Function to block the doctor
+    function blockDoctor() {
+      const status = document.getElementById('status');
+      status.textContent = 'Blocked';
+      document.getElementById('block-modal').style.display = 'none';
+      alert('Doctor has been blocked!');
+    }
+  </script>
+
+</body>
+</html>

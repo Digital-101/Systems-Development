@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions Page</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+      display: flex;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 220px;
+      background-color: #2c3e50;
+      color: white;
+      padding-top: 20px;
+      height: 100vh;
+      position: fixed;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+
+    .sidebar .active {
+      background-color: #16a085;
+    }
+
+    /* Content Area */
+    .content {
+      margin-left: 240px;
+      padding: 30px;
+      width: calc(100% - 240px);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Transaction Filter Section */
+    .filter-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      align-items: center;
+    }
+
+    .filter-container input, 
+    .filter-container select {
+      padding: 10px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    /* Transaction Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2 style="text-align: center; color: white;">Admin Panel</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Doctors</a>
+    <a href="#">Patients</a>
+    <a href="#">Appointments</a>
+    <a href="#" class="active">Transactions</a>
+    <a href="#">Notifications</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Transactions</h1>
+
+    <!-- Filter Section -->
+    <div class="filter-container">
+      <div>
+        <input type="date" id="start-date" placeholder="Start Date">
+        <input type="date" id="end-date" placeholder="End Date">
+      </div>
+      <div>
+        <select id="transaction-status">
+          <option value="">Select Status</option>
+          <option value="Completed">Completed</option>
+          <option value="Pending">Pending</option>
+          <option value="Failed">Failed</option>
+        </select>
+        <button onclick="filterTransactions()">Filter</button>
+      </div>
+    </div>
+
+    <!-- Transactions Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Transaction ID</th>
+          <th>Sender</th>
+          <th>Receiver</th>
+          <th>Amount (ZAR)</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="transaction-list">
+        <tr>
+          <td>#12345</td>
+          <td>John Doe</td>
+          <td>Dr. Smith</td>
+          <td>R1500.00</td>
+          <td>2024-01-25</td>
+          <td>Completed</td>
+          <td><button onclick="viewTransactionDetails(12345)">View</button></td>
+        </tr>
+        <tr>
+          <td>#12346</td>
+          <td>Jane Smith</td>
+          <td>Dr. Lee</td>
+          <td>R2000.00</td>
+          <td>2024-02-01</td>
+          <td>Pending</td>
+          <td><button onclick="viewTransactionDetails(12346)">View</button></td>
+        </tr>
+        <tr>
+          <td>#12347</td>
+          <td>David Lee</td>
+          <td>Dr. Johnson</td>
+          <td>R3000.00</td>
+          <td>2024-02-10</td>
+          <td>Failed</td>
+          <td><button onclick="viewTransactionDetails(12347)">View</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal for Transaction Details -->
+    <div id="transaction-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Transaction Details</h2>
+        <p><strong>Transaction ID:</strong> #12345</p>
+        <p><strong>Sender:</strong> John Doe</p>
+        <p><strong>Receiver:</strong> Dr. Smith</p>
+        <p><strong>Amount:</strong> R1500.00</p>
+        <p><strong>Date:</strong> 2024-01-25</p>
+        <p><strong>Status:</strong> Completed</p>
+        <p><strong>Payment Method:</strong> Credit Card</p>
+        <p><strong>Transaction Note:</strong> Payment for consultation.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Filter transactions based on input values
+    function filterTransactions() {
+      const startDate = document.getElementById('start-date').value;
+      const endDate = document.getElementById('end-date').value;
+      const status = document.getElementById('transaction-status').value;
+
+      console.log("Filtering transactions by:");
+      console.log("Start Date:", startDate);
+      console.log("End Date:", endDate);
+      console.log("Status:", status);
+
+      // You can implement actual filtering here, e.g., API call to fetch filtered data
+    }
+
+    // Function to view transaction details in a modal
+    function viewTransactionDetails(transactionId) {
+      // Show modal
+      document.getElementById('transaction-modal').style.display = "block";
+
+      // Simulate transaction data based on transaction ID
+      const transactionDetails = {
+        12345: {
+          id: '#12345',
+          sender: 'John Doe',
+          receiver: 'Dr. Smith',
+          amount: 'R1500.00',
+          date: '2024-01-25',
+          status: 'Completed',
+          method: 'Credit Card',
+          note: 'Payment for consultation.'
+        },
+        12346: {
+          id: '#12346',
+          sender: 'Jane Smith',
+          receiver: 'Dr. Lee',
+          amount: 'R2000.00',
+          date: '2024-02-01',
+          status: 'Pending',
+          method: 'PayPal',
+          note: 'Payment for follow-up appointment.'
+        },
+        12347: {
+          id: '#12347',
+          sender: 'David Lee',
+          receiver: 'Dr. Johnson',
+          amount: 'R3000.00',
+          date: '2024-02-10',
+          status: 'Failed',
+          method: 'Bank Transfer',
+          note: 'Payment for surgery.'
+        }
+      };
+
+      // Populate modal with dynamic data
+      const details = transactionDetails[transactionId];
+      document.querySelector('.modal-content').innerHTML = `
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Transaction Details</h2>
+        <p><strong>Transaction ID:</strong> ${details.id}</p>
+        <p><strong>Sender:</strong> ${details.sender}</p>
+        <p><strong>Receiver:</strong> ${details.receiver}</p>
+        <p><strong>Amount:</strong> ${details.amount}</p>
+        <p><strong>Date:</strong> ${details.date}</p>
+        <p><strong>Status:</strong> ${details.status}</p>
+        <p><strong>Payment Method:</strong> ${details.method}</p>
+        <p><strong>Transaction Note:</strong> ${details.note}</p>
+      `;
+    }
+
+    // Close the transaction details modal
+    function closeModal() {
+      document.getElementById('transaction-modal').style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

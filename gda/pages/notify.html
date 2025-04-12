@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .section-title {
+      background-color: #f2f2f2;
+      padding: 10px;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+
+    .alert-box {
+      background-color: #f9f9f9;
+      padding: 15px;
+      margin: 10px 0;
+      border-left: 5px solid #4CAF50;
+      font-size: 1em;
+    }
+
+    .alert-box.error {
+      border-left-color: #e74c3c;
+    }
+
+    .alert-box.info {
+      border-left-color: #3498db;
+    }
+
+    .alert-box.success {
+      border-left-color: #2ecc71;
+    }
+
+    .alert-box .message {
+      margin: 5px 0;
+    }
+
+    .alert-box button {
+      background-color: transparent;
+      color: #333;
+      border: none;
+      cursor: pointer;
+      padding: 5px 10px;
+      font-size: 0.9em;
+    }
+
+    .alert-box button:hover {
+      text-decoration: underline;
+    }
+
+    .alert-box .timestamp {
+      font-size: 0.9em;
+      color: #777;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Notifications</h1>
+
+    <!-- New Registrations -->
+    <div class="section-title">New Registrations</div>
+    <div class="alert-box success">
+      <div class="message">A new patient, <strong>Maduka Achebe</strong>, has registered.</div>
+      <div class="timestamp">2024-12-13 10:30 AM</div>
+      <button>View Details</button>
+    </div>
+    <div class="alert-box success">
+      <div class="message">A new patient, <strong>Jane Smith</strong>, has registered.</div>
+      <div class="timestamp">2024-12-13 09:00 AM</div>
+      <button>View Details</button>
+    </div>
+
+    <!-- Payment Statuses -->
+    <div class="section-title">Payment Statuses</div>
+    <div class="alert-box success">
+      <div class="message"><strong>David Lee</strong> has completed their payment of R100.</div>
+      <div class="timestamp">2024-12-12 03:45 PM</div>
+      <button>View Payment</button>
+    </div>
+    <div class="alert-box error">
+      <div class="message"><strong>Emily Clark</strong>'s payment of R200 failed. Please retry.</div>
+      <div class="timestamp">2024-12-12 02:15 PM</div>
+      <button>Retry Payment</button>
+    </div>
+
+    <!-- Appointment Updates -->
+    <div class="section-title">Appointment Updates</div>
+    <div class="alert-box info">
+      <div class="message">Your appointment with <strong>Dr. Smith</strong> has been confirmed for <strong>2024-12-14</strong>.</div>
+      <div class="timestamp">2024-12-13 11:00 AM</div>
+      <button>View Appointment</button>
+    </div>
+    <div class="alert-box info">
+      <div class="message">Your appointment with <strong>Dr. Williams</strong> has been rescheduled to <strong>2024-12-15</strong>.</div>
+      <div class="timestamp">2024-12-12 10:00 AM</div>
+      <button>View Appointment</button>
+    </div>
+    <div class="alert-box error">
+      <div class="message">Your appointment with <strong>Dr. Davis</strong> on <strong>2024-12-13</strong> has been canceled.</div>
+      <div class="timestamp">2024-12-12 08:30 AM</div>
+      <button>Reschedule Appointment</button>
+    </div>
+
+  </div>
+
+</body>
+</html>

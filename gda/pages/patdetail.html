@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Details</title>
+  <style>
+    /* Basic styles for the page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Patient info section */
+    .patient-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .patient-info .details {
+      flex: 1;
+      padding-left: 20px;
+    }
+
+    .patient-info img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .patient-info h2 {
+      margin-top: 0;
+    }
+
+    .patient-info p {
+      margin: 5px 0;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      margin: 20px 0;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #c0392b;
+    }
+
+    /* Section Title */
+    .section-title {
+      background-color: #f2f2f2;
+      padding: 10px;
+      font-size: 1.2em;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Patient Details</h1>
+
+    <!-- Patient Information Section -->
+    <div class="patient-info">
+      <div class="image">
+        <img src="https://images.unsplash.com/photo-1723221890385-6949a72be9da?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmlnZXJpYW4lMjBtYW58ZW58MHx8MHx8fDA%3D" alt="Patient Image">
+      </div>
+      <div class="details">
+        <h2>Maduka Achebe</h2>
+        <p><strong>Age:</strong> 32</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Email:</strong> maduka32@applicenta.com</p>
+        <p><strong>Phone:</strong> +234 567 4890</p>
+      </div>
+    </div>
+
+    <!-- Appointment History Section -->
+    <div class="section-title">Appointment History</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Appointment No.</th>
+          <th>Date</th>
+          <th>Doctor</th>
+          <th>Disease</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2024-12-01</td>
+          <td>Dr. Smith</td>
+          <td>Flu</td>
+          <td><button>Block User</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>2024-11-10</td>
+          <td>Dr. Williams</td>
+          <td>Cold</td>
+          <td><button>Block User</button></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>2024-10-15</td>
+          <td>Dr. Davis</td>
+          <td>Headache</td>
+          <td><button>Block User</button></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>2024-09-05</td>
+          <td>Dr. Lee</td>
+          <td>Allergy</td>
+          <td><button>Block User</button></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>2024-08-20</td>
+          <td>Dr. Clark</td>
+          <td>Back Pain</td>
+          <td><button>Block User</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

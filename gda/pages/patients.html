@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Table</title>
+  <style>
+    /* Centering the table */
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 80%;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    /* Styling for the "Add New Patient" button */
+    .add-patient-btn {
+      display: block;
+      width: 200px;
+      margin: 20px auto;
+      padding: 10px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .add-patient-btn:hover {
+      background-color: #45a049;
+    }
+
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Add New Patient Button -->
+  <button class="add-patient-btn">Add New Patient</button>
+
+  <!-- Patient Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>No. of Patients</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Maduka Achebe</td>
+        <td>32</td>
+        <td>Male</td>
+        <td>maduka32@applicenta.com</td>
+        <td><button>View</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Smith</td>
+        <td>29</td>
+        <td>Female</td>
+        <td>janesmith@applicenta.com</td>
+        <td><button>View</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Michael Brown</td>
+        <td>45</td>
+        <td>Male</td>
+        <td>michaelb@applicenta.com</td>
+        <td><button>View</button></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Emily Clark</td>
+        <td>34</td>
+        <td>Female</td>
+        <td>emilyclark@applicenta.com</td>
+        <td><button>View</button></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>David Lee</td>
+        <td>58</td>
+        <td>Male</td>
+        <td>davidlee@applicenta.com</td>
+        <td><button>View</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
